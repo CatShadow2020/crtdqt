@@ -1,0 +1,24 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/flag.bmp</file>
+        <file>images/expandvert.bmp</file>
+        <file>images/contractvert.bmp</file>
+        <file>images/config.bmp</file>
+        <file>images/blank.bmp</file>
+        <file>images/autoscale1.bmp</file>
+        <file>images/autoscale.bmp</file>
+        <file>images/about.bmp</file>
+        <file>images/Flag-red-icon.png</file>
+        <file>images/stop.ico</file>
+        <file>images/tool.ico</file>
+        <file>images/run.ico</file>
+        <file>images/info.ico</file>
+        <file>images/zoom_in.ico</file>
+        <file>images/zoom_out.ico</file>
+        <file>images/up.ico</file>
+        <file>images/down.ico</file>
+        <file>images/fit.ico</file>
+        <file>images/fit.png</file>
+        <file>images/autofit.ico</file>
+    </qresource>
+</RCC>
