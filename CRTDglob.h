@@ -1,4 +1,3 @@
-#pragma "$Id$"
 #include "nrtsinfo.h"
 
 extern bool g_bForceRedraw;

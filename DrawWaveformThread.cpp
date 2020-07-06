@@ -1,11 +1,11 @@
-#pragma "$Id$"
+//////////////////////////////////////////////////////////////////////
 // DrawWaveformThread.cpp: implementation of the DrawWaveformThread class.
 //
 //////////////////////////////////////////////////////////////////////
 #include <qapplication.h> 
 #include "DrawWaveformThread.h"
 #include "CRTDglob.h"
-#include "Preview.h"
+// #include "Preview.h"
 // #include "qcustomevent.h"
 
 //////////////////////////////////////////////////////////////////////
@@ -32,8 +32,8 @@ void DrawWaveformThread::run()
 {
 	int nTimerCount=nRefreshTime;
 
-	CRTDisplay *pRTDisplay = pMF->pDisplay;
-	CPreview *pPreview      = pMF->pPreview;
+//	CRTDisplay *pRTDisplay = pMF->pDisplay;
+//	CPreview *pPreview      = pMF->pPreview;
 
 	while(bContinue)
     {

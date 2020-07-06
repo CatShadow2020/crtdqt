@@ -1,4 +1,3 @@
-#pragma "$Id$"
 // StopAcquisitionThread.cpp: implementation of the StopAcquisitionThread class.
 //
 //////////////////////////////////////////////////////////////////////

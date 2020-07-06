@@ -1,5 +1,4 @@
-#pragma "$Id$"
-
+//////////////////////////////////////////////////////////////////////
 // RTDisplay.h: interface for the CRTDisplay class.
 //
 //////////////////////////////////////////////////////////////////////
@@ -7,7 +6,7 @@
 #if !defined(_RTDISPLAY_H_INCLUDED_)
 #define _RTDISPLAY_H_INCLUDED_
 
-#include "platform.h"
+//#include "platform.h"
 #include <qwidget.h>
 #include <qpixmap.h>
 #include <QList> 

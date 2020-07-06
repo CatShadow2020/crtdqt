@@ -1,4 +1,3 @@
-#pragma "$Id$"
 #if !defined(_PREVIEW_H_INCLUDED_)
 #define _PREVIEW_H_INCLUDED_
 

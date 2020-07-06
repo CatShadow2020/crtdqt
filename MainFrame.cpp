@@ -1,21 +1,19 @@
-#pragma "$Id$"
-
-#include <qapplication.h> 
-#include <qvariant.h>
-#include <qpushbutton.h>
-#include <qlayout.h>
-#include <qtooltip.h>
-#include <qwhatsthis.h>
-#include <qaction.h>
-#include <qmenubar.h>
-#include <QMenu>
-#include <qtoolbar.h>
-#include <qimage.h>
-#include <qpixmap.h>
-#include <qstatusbar.h> 
-#include <qmessagebox.h>
-#include <qfont.h>
-#include <QMouseEvent>
+#include <qapplication.h>
+//#include <qvariant.h>
+//#include <qpushbutton.h>
+//#include <qlayout.h>
+//#include <qtooltip.h>
+//#include <qwhatsthis.h>
+//#include <qaction.h>
+//#include <qmenubar.h>
+//#include <QMenu>
+//#include <qtoolbar.h>
+//#include <qimage.h>
+//#include <qpixmap.h>
+//#include <qstatusbar.h>
+//#include <qmessagebox.h>
+//#include <qfont.h>
+//#include <QMouseEvent>
 #include "set_all_parameters.h"
 #include "CRTDglob.h"
 #include "MainFrame.h"
@@ -23,66 +21,52 @@
 
 void StartAcquisition(MainFrame *p);
 
-
 /*
  *  Constructs a MainFrame as a child of 'parent', with the
  *  name 'name' and widget flags set to 'f'.
  *
  */
 MainFrame::MainFrame( QWidget* parent) : QMainWindow( parent)
-	{
+{
     (void)statusBar();
 
     setWindowFlags(Qt::Window | Qt::WindowMaximizeButtonHint | Qt::WindowMinimizeButtonHint| Qt::WindowCloseButtonHint);
 
-
-	nPreviewHeight = 35;
-
+    nPreviewHeight = 35;
 
     // toolbars
     toolBar = new QmyToolBar( this);
-
     toolBar->setWindowFlags(Qt::Tool | Qt::WindowCloseButtonHint); toolBar->show();
-
-//    toolBar->setMovingEnabled( FALSE );
+    //    toolBar->setMovingEnabled( FALSE );
     toolBar->addSeparator();
-
-//    toolBar->setWindowFlags(Qt::Tool | Qt::FramelessWindowHint);
-
-
+    //    toolBar->setWindowFlags(Qt::Tool | Qt::FramelessWindowHint);
 
     pDisplay = new CRTDisplay(this);
-	pDisplay->show();
+    pDisplay->show();
 
     pPreview = new CPreview(pDisplay, this);
     pPreview->show();
 
     connect(this, SIGNAL(drawPreviewSignal()), pPreview, SLOT(drawPreviewSlot()) );
     connect(this, SIGNAL(autoScaleSignal(int )), pDisplay, SLOT(autoScaleSlot(int )) );
-
     connect(this, SIGNAL(contractVertSignal()), pDisplay, SLOT(contractVertSlot()) );
     connect(this, SIGNAL(expandVertSignal()), pDisplay, SLOT(expandVertSlot()) );
-
     connect(this, SIGNAL(shiftUpDownSignal(int )), pDisplay, SLOT(shiftUpDownSlot(int )) );
 
-
-
-
-	toolBar->SetToolbarState(0);
+    toolBar->SetToolbarState(0);
     languageChange();
     resize( QSize(600, 480).expandedTo(minimumSizeHint()) );
     installEventFilter(this);
     pDisplay->installEventFilter(this);
     setMouseTracking(true);
-
 }
 
 /*
  *  Destroys the object and frees any allocated resources
  */
 MainFrame::~MainFrame()
-	{
-	}
+{
+}
 
 /*
  *  Sets the strings of the subwidgets using the current
@@ -91,53 +75,45 @@ MainFrame::~MainFrame()
 void MainFrame::languageChange()
 {
     this->setWindowTitle(tr( "CRTD QT(ISI)" ));
-//    toolBar->setLabel( tr( "Tools" ) );
-//    toolBar->
-	toolBar->languageChange();
+    toolBar->languageChange();
 }
 
 void MainFrame::helpIndex()
-	{
-
-	}
-
+{
+}
 
 void MainFrame::helpContents()
-	{
-
-	}
-
+{
+}
 
 void MainFrame::helpAbout()
-	{
-	}
-
+{
+}
 
 void MainFrame::configButton_clicked()
-	{
+{
     Set_All_Parameters SAL(this);
-	SAL.exec();
-	}
-
+    SAL.exec();
+}
 
 void MainFrame::newSlot()
-	{
-	}
+{
+}
 
 
 void MainFrame::runButton_clicked()
-	{
-	if(NrtsInfo.GetSelectedChanNumber()==0)
-		{
-		QMessageBox mb("ERROR","No channels selected",QMessageBox::Critical, QMessageBox::Ok, NULL, NULL);
-		mb.exec();
-		return;
-		}
-	toolBar->SetToolbarState(1);
-	pDisplay->Run();
-	StartAcquisition(this);
-	nTimerCount=0;
-	}
+{
+    if(NrtsInfo.GetSelectedChanNumber()==0)
+    {
+        QMessageBox mb("ERROR","No channels selected",QMessageBox::Critical, QMessageBox::Ok, int(NULL), int(NULL));
+        mb.exec();
+        return;
+    }
+    toolBar->SetToolbarState(1);
+    pDisplay->Run();
+    StartAcquisition(this);
+    nTimerCount=0;
+}
 
 void MainFrame::autoButton_clicked()
 {
@@ -182,51 +158,51 @@ void MainFrame::aboutButton_clicked()
 
 void  MainFrame::resizeEvent( QResizeEvent *q )
 {
-	QStatusBar *pStatusB;
-	QRect qzt, qzs, qz, rc;
-	int sbH, tbH;
+    QStatusBar *pStatusB;
+    QRect qzt, qzs, qz, rc;
+    int sbH, tbH;
 
-	rc = rect();
+    rc = rect();
 
-	qzt=toolBar->frameGeometry();
-	pStatusB = statusBar();
+    qzt=toolBar->frameGeometry();
+    pStatusB = statusBar();
 
-	qzs=pStatusB->frameGeometry();
+    qzs=pStatusB->frameGeometry();
 
-
-	sbH=qzs.height();
-//	tbH=qzt.height();
+    sbH=qzs.height();
+    //	tbH=qzt.height();
     tbH = 0;
 
+    qz = rc;
+    qz.setTop(tbH+1);
+    qz.setBottom(rc.bottom()-sbH-nPreviewHeight);
+    pDisplay->setGeometry(qz);
 
+    qz.setTop(rc.bottom()-sbH-nPreviewHeight);
+    qz.setBottom(rc.bottom()-sbH);
+    pPreview->setGeometry(qz);
 
-	qz = rc;
-	qz.setTop(tbH+1);
-	qz.setBottom(rc.bottom()-sbH-nPreviewHeight);
-	pDisplay->setGeometry(qz);
+}
 
-	qz.setTop(rc.bottom()-sbH-nPreviewHeight);
-	qz.setBottom(rc.bottom()-sbH);
-	pPreview->setGeometry(qz);
-
-	}
 void  MainFrame::SetTextToStatusbar(const char *pText)
-	{
-	QStatusBar *pStatusB;
-	pStatusB = statusBar();
+{
+    QStatusBar *pStatusB;
+    pStatusB = statusBar();
     pStatusB->showMessage(pText);
-	}
+}
+
 void MainFrame::exitButton_clicked()
-	{
-	QApplication::exit();
-	}
+{
+    QApplication::exit();
+}
 
 void StopAcquisition(MainFrame *p);
 
 void MainFrame::stopButton_clicked()
-	{
-	StopAcquisition(this);
-	}
+{
+    StopAcquisition(this);
+}
+
 bool MainFrame::eventFilter(QObject *obj, QEvent *event)
 {
     if(pDisplay == obj)

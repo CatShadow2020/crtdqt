@@ -1,4 +1,4 @@
-#pragma "$Id$"
+//////////////////////////////////////////////////////////////////////
 // MWindow.cpp: implementation of the CMWindow class.
 //
 //////////////////////////////////////////////////////////////////////
@@ -12,14 +12,14 @@
 
 CMWindow::CMWindow()
 {
-	amin=-3000;
-	amax=3000;
+    amin=-3000;
+    amax=3000;
 }
 
 void CMWindow::Add(CDataBlock *dblk)
 {
     xferData.append(dblk);
-//	++nBlocksRec;
+    //	++nBlocksRec;
 }
 
 CMWindow::~CMWindow()
@@ -27,10 +27,10 @@ CMWindow::~CMWindow()
     int i, nSz = xferData.count();
 
     for( i=0; i< nSz; ++i)
-		{
+    {
         CDataBlock *dblk=xferData[i];
-		delete dblk;
-		}
+        delete dblk;
+    }
     xferData.clear();
 }
 /*-----------------------------------------------------------------------+

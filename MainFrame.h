@@ -1,5 +1,3 @@
-#pragma "$Id$"
-
 #ifndef MAINFRAME_H
 #define MAINFRAME_H
 

@@ -1,5 +1,3 @@
-#pragma "$Id$"
-
 #ifndef SET_ALL_PARAMETERS_H
 #define SET_ALL_PARAMETERS_H
 

@@ -1,23 +1,27 @@
-#pragma "$Id$"
-
+//////////////////////////////////////////////////////////////////////
 // NRTSSTAINFO.cpp: implementation of the CNRTSSTAINFO class.
 //
 //////////////////////////////////////////////////////////////////////
-
+#include <iostream>
 #include "nrtsinfo.h"
-
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
-
 CNRTSSTAINFO::CNRTSSTAINFO()
-	{
-	}
+{
+}
+
 CNRTSSTAINFO::CNRTSSTAINFO(QString StaName)
-	{
-	Sta=StaName;
-	}
+{
+    Sta=StaName;
+}
+
+CNRTSSTAINFO::~CNRTSSTAINFO()
+{
+    Clear();
+}
+
 void CNRTSSTAINFO::AddChan(QString ChanName, QString csLCODE, double dSpS, BOOL bDraw)
 {
     QString sKey = ChanName+"."+csLCODE;
@@ -25,10 +29,6 @@ void CNRTSSTAINFO::AddChan(QString ChanName, QString csLCODE, double dSpS, BOOL 
     ChanInfo[sKey] = ci;
 }
 
-CNRTSSTAINFO::~CNRTSSTAINFO()
-	{
-	Clear();
-	}
 void CNRTSSTAINFO::Clear()
 {
     CNRTSCHANINFO *ci;
@@ -36,7 +36,7 @@ void CNRTSSTAINFO::Clear()
     for ( i=ChanInfo.begin(); i!=ChanInfo.end(); ++i)
     {
         ci = *i;
-		delete ci;
+        delete ci;
     }
     ChanInfo.clear();
 }

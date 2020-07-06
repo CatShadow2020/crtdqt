@@ -1,5 +1,4 @@
-#pragma "$Id$"
-
+//////////////////////////////////////////////////////////////////////
 // StopAcquisitionThread.h: interface for the StopAcquisitionThread class.
 //
 //////////////////////////////////////////////////////////////////////
@@ -13,14 +12,14 @@
 
 class StopAcquisitionThread : public QThread  
 {
-Q_OBJECT
+    Q_OBJECT
 
 public:
     StopAcquisitionThread();
-	void Init(MainFrame *p);
-	virtual ~StopAcquisitionThread();
-	virtual void run();
-	MainFrame *pMF;
+    void Init(MainFrame *p);
+    virtual ~StopAcquisitionThread();
+    virtual void run();
+    MainFrame *pMF;
 
 signals:
     void disableToolbar(bool);

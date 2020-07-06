@@ -1,10 +1,10 @@
-#pragma "$Id$"
+//////////////////////////////////////////////////////////////////////
 // IsiInterruptThread.h: interface for the IsiInterruptThread class.
 //
 //////////////////////////////////////////////////////////////////////
 
-#if !defined(AFX_ISIINTERRUPTTHREAD_H__3A80311E_2E1F_4895_BFDF_C206CC389295__INCLUDED_)
-#define AFX_ISIINTERRUPTTHREAD_H__3A80311E_2E1F_4895_BFDF_C206CC389295__INCLUDED_
+#if !defined(_ISIINTERRUPTTHREAD_H_INCLUDED_)
+#define _ISIINTERRUPTTHREAD_H_INCLUDED_
 
 #include <qthread.h>
 #include "CRTDglob.h"
@@ -25,7 +25,7 @@ protected:
 
 };
 
-#endif // !defined(AFX_ISIINTERRUPTTHREAD_H__3A80311E_2E1F_4895_BFDF_C206CC389295__INCLUDED_)
+#endif // !defined(_ISIINTERRUPTTHREAD_H_INCLUDED_)
 /*-----------------------------------------------------------------------+
  |                                                                       |
  | Copyright (C) 2016 Regents of the University of California            |

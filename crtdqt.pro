@@ -1,5 +1,3 @@
-##pragma "$Id$"
-
 TARGET = crtdqt 
 CONFIG += debug \
           warn_off \
@@ -9,6 +7,8 @@ QT += gui
 QT += widgets
            
 HEADERS += nrtschaninfo.h \
+           IsiInterruptThread.h \
+           MWindow.h \
            nrtsinfo.h \
            nrtsstainfo.h \
            set_all_parameters.h \
@@ -20,10 +20,10 @@ HEADERS += nrtschaninfo.h \
            RTDisplay.h \
            StopAcquisitionThread.h \
            GettingDataThread.h \
-           DrawWaveformThread.h \ 
-           IsiInterruptThread.cpp
+           DrawWaveformThread.h  
 
 SOURCES += datablock.cpp \
+           IsiInterruptThread.cpp \
            main.cpp \
            nrtschaninfo.cpp \
            nrtsinfo.cpp \
@@ -38,13 +38,12 @@ SOURCES += datablock.cpp \
            RTDisplay.cpp \
            StopAcquisitionThread.cpp \
            GettingDataThread.cpp \
-           DrawWaveformThread.cpp \
-           IsiInterruptThread.cpp
+           DrawWaveformThread.cpp
 
 
 
 macx{
-LIBS    = -L/Volumes/code/lib/$(PLATFORM)
+LIBS    = -L/Users/dauerbach/dev/nrts/lib/darwin.19.5.0.x86_64
 LIBS   += -lc
 LIBS   += -lmseed
 LIBS   += -ldmc
@@ -70,11 +69,10 @@ LIBS   += -lutil
 LIBS   += -lc
 
 DEFINES += $(OSNAME)
-DEFINES += $(PLATFORM)
+#DEFINES += darwin.19.5.0.x86_64 ##$(PLATFORM)
 DEFINES += $(MACHINE)
-DEFINES += BSD
-INCLUDEPATH = /Volumes/code/src/include
-INCLUDEPATH += /Volumes/code/src/include/dmc
+DEFINES += $(OSTYPE)
+INCLUDEPATH = /Users/dauerbach/dev/nrts/src/include
 #QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.11
 QMAKE_CFLAGS += -Wall
 QMAKE_CXXFLAGS += -Wall
@@ -166,3 +164,6 @@ RESOURCES += \
 ## *
 ## * $Log$
 ## */	
+
+DISTFILES += \
+    nrts_envrc.bash

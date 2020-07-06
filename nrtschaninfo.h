@@ -1,10 +1,10 @@
-#pragma "$Id$"
+//////////////////////////////////////////////////////////////////////
 // NRTSCHANINFO.h: interface for the CNRTSCHANINFO class.
 //
 //////////////////////////////////////////////////////////////////////
 
-#if !defined(AFX_NRTSCHANINFO_H__F0C2AFB8_FD5A_11D2_8661_4CAE18000000__INCLUDED_)
-#define AFX_NRTSCHANINFO_H__F0C2AFB8_FD5A_11D2_8661_4CAE18000000__INCLUDED_
+#if !defined(_NRTSCHANINFO_H_INCLUDED_)
+#define _NRTSCHANINFO_H_INCLUDED_
 
 #include "platform.h"
 #include <qstring.h> 
@@ -23,7 +23,7 @@ public:
 
 };
 
-#endif // !defined(AFX_NRTSCHANINFO_H__F0C2AFB8_FD5A_11D2_8661_4CAE18000000__INCLUDED_)
+#endif // !defined(_NRTSCHANINFO_H_INCLUDED_)
 /*-----------------------------------------------------------------------+
  |                                                                       |
  | Copyright (C) 2016 Regents of the University of California            |

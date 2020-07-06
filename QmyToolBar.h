@@ -1,10 +1,10 @@
-#pragma "$Id$"
+//////////////////////////////////////////////////////////////////////
 // QmyToolBar.h: interface for the QmyToolBar class.
 //
 //////////////////////////////////////////////////////////////////////
 
-#if !defined(AFX_QMYTOOLBAR_H__04886BF5_5119_4557_85D1_F7422A3FB341__INCLUDED_)
-#define AFX_QMYTOOLBAR_H__04886BF5_5119_4557_85D1_F7422A3FB341__INCLUDED_
+#if !defined(_QMYTOOLBAR_H_INCLUDED_)
+#define _QMYTOOLBAR_H_INCLUDED_
 
 #include <qwidget.h>
 #include <qstring.h>
@@ -49,7 +49,7 @@ public:
 
 };
 
-#endif // !defined(AFX_QMYTOOLBAR_H__04886BF5_5119_4557_85D1_F7422A3FB341__INCLUDED_)
+#endif // !defined(_QMYTOOLBAR_H_INCLUDED_)
 /*-----------------------------------------------------------------------+
  |                                                                       |
  | Copyright (C) 2016 Regents of the University of California            |

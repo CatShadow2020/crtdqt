@@ -1,10 +1,10 @@
-#pragma "$Id$"
+//////////////////////////////////////////////////////////////////////
 // NRTSINFO.h: interface for the CNRTSINFO class.
 //
 //////////////////////////////////////////////////////////////////////
 
-#if !defined(AFX_NRTSINFO_H__F0C2AFB7_FD5A_11D2_8661_4CAE18000000__INCLUDED_)
-#define AFX_NRTSINFO_H__F0C2AFB7_FD5A_11D2_8661_4CAE18000000__INCLUDED_
+#if !defined(_NRTSINFO_H_INCLUDED_)
+#define _NRTSINFO_H_INCLUDED_
 
 
 #include <QString> 
@@ -31,7 +31,7 @@ public:
 	void SaveConfigToFile();
 	void LoadConfigFromFile();
 	void SaveConfig();
-	void LoadConfig();
+//	void LoadConfig();
 
 
 
@@ -41,7 +41,7 @@ public:
 
 };
 
-#endif // !defined(AFX_NRTSINFO_H__F0C2AFB7_FD5A_11D2_8661_4CAE18000000__INCLUDED_)
+#endif // !defined(_NRTSINFO_H_INCLUDED_)
 /*-----------------------------------------------------------------------+
  |                                                                       |
  | Copyright (C) 2016 Regents of the University of California            |

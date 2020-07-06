@@ -1,14 +1,12 @@
-#pragma "$Id$"
-
+//////////////////////////////////////////////////////////////////////
 // NRTSSTAINFO.h: interface for the CNRTSSTAINFO class.
 //
 //////////////////////////////////////////////////////////////////////
-
-#if !defined(AFX_NRTSSTAINFO_H__F0C2AFB9_FD5A_11D2_8661_4CAE18000000__INCLUDED_)
-#define AFX_NRTSSTAINFO_H__F0C2AFB9_FD5A_11D2_8661_4CAE18000000__INCLUDED_
+#if !defined(_NRTSSTAINFO_H_INCLUDED_)
+#define _NRTSSTAINFO_H_INCLUDED_
 
 #include "platform.h"
-#include "nrtsstainfo.h"
+//#include "nrtsstainfo.h"
 #include <QMap>
 #include "nrtschaninfo.h"
 
@@ -27,7 +25,7 @@ public:
 
 };
 
-#endif // !defined(AFX_NRTSSTAINFO_H__F0C2AFB9_FD5A_11D2_8661_4CAE18000000__INCLUDED_)
+#endif // !defined(_NRTSSTAINFO_H_INCLUDED_)
 /*-----------------------------------------------------------------------+
  |                                                                       |
  | Copyright (C) 2016 Regents of the University of California            |

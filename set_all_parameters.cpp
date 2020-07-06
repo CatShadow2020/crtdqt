@@ -1,4 +1,3 @@
-#pragma "$Id$"
 #undef max
 #undef min
 #include "set_all_parameters.h"
@@ -28,18 +27,16 @@
 Set_All_Parameters::Set_All_Parameters( QWidget* parent ) : QDialog( parent )
 {
     QHeaderView *header;
-    setWindowTitle( "Set_All_Parameters" );
-//    setSizePolicy( QSizePolicy( (QSizePolicy::SizeType)3, (QSizePolicy::SizeType)1, 0, 0, sizePolicy().hasHeightForWidth() ) );
-    setSizeGripEnabled( FALSE);
-
     QGridLayout *grdLayout = new QGridLayout();
 
+    setWindowTitle( "Set_All_Parameters" );
+    setSizeGripEnabled( FALSE);
     setLayout(grdLayout);
 
-	NrtsInfoX=NrtsInfo;
+    NrtsInfoX=NrtsInfo;
 
     QWidget* privateLayoutWidget = new QWidget(  );
- //   privateLayoutWidget->setGeometry( QRect( 10, 340, 530, 28 ) );
+    //   privateLayoutWidget->setGeometry( QRect( 10, 340, 530, 28 ) );
     Layout1 = new QHBoxLayout( privateLayoutWidget );
 
     buttonHelp = new QPushButton( privateLayoutWidget );
@@ -63,8 +60,6 @@ Set_All_Parameters::Set_All_Parameters( QWidget* parent ) : QDialog( parent )
 
     grdLayout->addWidget(tabWidget,0, 0);
 
-//    tabWidget->setGeometry( QRect( 10, 10, 530, 320 ) );
-
     Channels = new QWidget( tabWidget );
 
     QVBoxLayout * vboxLayout0 = new QVBoxLayout(  );
@@ -79,12 +74,12 @@ Set_All_Parameters::Set_All_Parameters( QWidget* parent ) : QDialog( parent )
 
     IDC_CHAN = new QTableWidget( Channels );
 
-//    IDC_CHAN->setGeometry( QRect( 150, 10, 360, 180 ) );
+    //    IDC_CHAN->setGeometry( QRect( 150, 10, 360, 180 ) );
     IDC_CHAN->setRowCount( 0 );
     IDC_CHAN->setColumnCount( 3 );
     IDC_CHAN->setSelectionBehavior(QAbstractItemView::SelectRows);
     IDC_CHAN->verticalHeader()->setVisible(false);
-//	IDC_CHAN->setLeftMargin(0);
+    //	IDC_CHAN->setLeftMargin(0);
     IDC_CHAN->setEditTriggers(QAbstractItemView::NoEditTriggers);
     header = IDC_CHAN->horizontalHeader();
 
@@ -92,12 +87,10 @@ Set_All_Parameters::Set_All_Parameters( QWidget* parent ) : QDialog( parent )
     labels << "Channel" << "Lcode" << "SpS";
     IDC_CHAN->setHorizontalHeaderLabels(labels);
 
-
     InitStaTable();
 
-	Layout1->addWidget(IDC_STA);
-	Layout1->addWidget(IDC_CHAN);
-
+    Layout1->addWidget(IDC_STA);
+    Layout1->addWidget(IDC_CHAN);
 
     Port_number_2 = new QLabel( Channels );
     Port_number_2->setGeometry( QRect( 17, 256, 57, 20 ) );
@@ -114,32 +107,19 @@ Set_All_Parameters::Set_All_Parameters( QWidget* parent ) : QDialog( parent )
     IDC_PORT = new QLineEdit( Channels );
     IDC_PORT->setGeometry( QRect( 80, 256, 165, 20 ) );
 
-	Layout2->addLayout(GridLayout0);
+    Layout2->addLayout(GridLayout0);
     GridLayout0->addWidget(Port_number_2 , 0, 0);GridLayout0->addWidget(IDC_PORT, 0, 1);
-	GridLayout0->addWidget(ISI_Server_2  , 1, 0);GridLayout0->addWidget(IDC_NRTSSERVER  , 1, 1);
+    GridLayout0->addWidget(ISI_Server_2  , 1, 0);GridLayout0->addWidget(IDC_NRTSSERVER  , 1, 1);
 
-	Layout2->addWidget(IDC_LOADLIST);
+    Layout2->addWidget(IDC_LOADLIST);
 
     tabWidget->insertTab( 0, Channels, QString::fromLatin1("") );
 
     Display_parameters = new QWidget( tabWidget );
 
-/*    frame3 = new QFrame( Display_parameters, "frame3" );
-    frame3->setGeometry( QRect( 8, 6, 361, 171 ) );
-    frame3->setFrameShape( QFrame::StyledPanel );
-    frame3->setFrameShadow( QFrame::Raised );*/
-
-//    QWidget* privateLayoutWidget_2 = new QWidget( Display_parameters, "layout14" );
-	
-
-
-//    privateLayoutWidget_2->setGeometry( QRect( 2, 26, 232, 200 ) );
-//	privateLayoutWidget_2->setGeometry( QRect( 2, 26, 400, 200 ) );
-//    privateLayoutWidget_2->setGeometry( tabWidget->rect() );
-
     layout14 = new QGridLayout( Display_parameters);
 
-    Displayed_window_size = new QLabel( Display_parameters/*privateLayoutWidget_2*/ );
+    Displayed_window_size = new QLabel( Display_parameters );
     Displayed_window_size->setFrameShape( QLabel::NoFrame );
 
     layout14->addWidget( Displayed_window_size, 0, 0 );
@@ -162,9 +142,6 @@ Set_All_Parameters::Set_All_Parameters( QWidget* parent ) : QDialog( parent )
     layout14->addWidget( IDC_BUFFEREDTIME, 1, 1 );
 
     IDC_DISPLAYTIME = new QLineEdit( Display_parameters );
-//    IDC_DISPLAYTIME->setFrameShape( QLineEdit::LineEditPanel );
-//    IDC_DISPLAYTIME->setFrameShadow( QLineEdit::Sunken );
-//    IDC_DISPLAYTIME->setFrameStyle( QFrame::Sunken );
 
     layout14->addWidget( IDC_DISPLAYTIME, 0, 1 );
 
@@ -176,20 +153,20 @@ Set_All_Parameters::Set_All_Parameters( QWidget* parent ) : QDialog( parent )
 
     layout14->addWidget( Delay__sec, 3, 0 );
 
-	Display_parameters->adjustSize();
+    Display_parameters->adjustSize();
 
     tabWidget->insertTab( 1, Display_parameters, "" );
     languageChange();
     resize( QSize(558, 403).expandedTo(minimumSizeHint()) );
-//    clearWState( WState_Polished );
+    //    clearWState( WState_Polished );
     setAttribute(Qt::WA_WState_Polished, true );
 
     // signals and slots connections
     connect( buttonOk, SIGNAL( clicked() ), this,  SLOT(OnOk())  );
     connect( buttonCancel, SIGNAL( clicked() ), this, SLOT( reject() ) );
-	connect( IDC_LOADLIST, SIGNAL( clicked() ), this,  SLOT(OnLoadList())  );
+    connect( IDC_LOADLIST, SIGNAL( clicked() ), this,  SLOT(OnLoadList())  );
     connect( IDC_CHAN, SIGNAL(  itemClicked (  QTableWidgetItem *) ), this,  SLOT(OnClickChanListTableItem( QTableWidgetItem *))  );
-	
+
 
     // tab order
     setTabOrder( buttonHelp, buttonOk );
@@ -211,25 +188,21 @@ Set_All_Parameters::Set_All_Parameters( QWidget* parent ) : QDialog( parent )
     Refresh_time->setBuddy( IDC_REFRESHTIME );
     Delay__sec->setBuddy( IDC_DELAY );
 
-	QString text;
-	text.sprintf("%d",nRefreshTime);
-	IDC_REFRESHTIME->setText(text);
-	text.sprintf("%d",nDelay);
-	IDC_DELAY->setText(text);
-	IDC_NRTSSERVER->setText(server);
-	text.sprintf("%d",nNrtsPort);
-	IDC_PORT->setText(text);
-	text.sprintf("%d",nDisplayedTime);
-	IDC_DISPLAYTIME->setText(text);
-	text.sprintf("%d",nBufferedTime);
-	IDC_BUFFEREDTIME->setText(text);
-	layout14->sizeHint();
-	LoadStaList();
-	ActiveSta = "";
-
-
-
-
+    QString text;
+    text = QString("%1").arg(nRefreshTime);
+    IDC_REFRESHTIME->setText(text);
+    text = QString("%1").arg(nDelay);
+    IDC_DELAY->setText(text);
+    IDC_NRTSSERVER->setText(server);
+    text = QString("%1").arg(nNrtsPort);
+    IDC_PORT->setText(text);
+    text = QString("%1").arg(nDisplayedTime);
+    IDC_DISPLAYTIME->setText(text);
+    text = QString("%1").arg(nBufferedTime);
+    IDC_BUFFEREDTIME->setText(text);
+    layout14->sizeHint();
+    LoadStaList();
+    ActiveSta = "";
 }
 
 /*
@@ -267,107 +240,101 @@ void Set_All_Parameters::languageChange()
 
 // SIGNAL OnOk
 void Set_All_Parameters::OnOk()
-	{
-	long nTmp;
-	bool bOk;
- 	QString text;
+{
+    long nTmp;
+    bool bOk;
+    QString text;
 
+    text = IDC_REFRESHTIME->text();
+    nTmp=text.toInt(&bOk);
+    if(bOk)
+    {
+        nRefreshTime = nTmp;
+    }
+    else
+    {
+        IDC_REFRESHTIME->setFocus();
+        return;
+    }
 
-	text = IDC_REFRESHTIME->text();
-	nTmp=text.toInt(&bOk);
-	if(bOk)
-		{
-		nRefreshTime = nTmp;
-		}
-	else
-		{
-		IDC_REFRESHTIME->setFocus();
-		return;
-		}
+    text = IDC_DELAY->text();
+    nTmp=text.toInt(&bOk);
+    if(bOk)
+    {
+        nDelay = nTmp;
+    }
+    else
+    {
+        IDC_DELAY->setFocus();
+        return;
+    }
 
+    text = IDC_PORT->text();
+    nTmp=text.toInt(&bOk);
+    if(bOk)
+    {
+        nNrtsPort = nTmp;
+    }
+    else
+    {
+        IDC_PORT->setFocus();
+        return;
+    }
 
-	text = IDC_DELAY->text();
-	nTmp=text.toInt(&bOk);
-	if(bOk)
-		{
-		nDelay = nTmp;
-		}
-	else
-		{
-		IDC_DELAY->setFocus();
-		return;
-		}
+    server = IDC_NRTSSERVER->text();
 
+    IDC_NRTSSERVER->setText(server);
 
-	text = IDC_PORT->text();
-	nTmp=text.toInt(&bOk);
-	if(bOk)
-		{
-		nNrtsPort = nTmp;
-		}
-	else
-		{
-		IDC_PORT->setFocus();
-		return;
-		}
+    text = IDC_DISPLAYTIME->text();
+    nTmp=text.toInt(&bOk);
+    if(bOk)
+    {
+        nDisplayedTime = nTmp;
+    }
+    else
+    {
+        IDC_DISPLAYTIME->setFocus();
+        return;
+    }
 
-	server = IDC_NRTSSERVER->text();
-
-	IDC_NRTSSERVER->setText(server);
-
-
-	text = IDC_DISPLAYTIME->text();
-	nTmp=text.toInt(&bOk);
-	if(bOk)
-		{
-		nDisplayedTime = nTmp;
-		}
-	else
-		{
-		IDC_DISPLAYTIME->setFocus();
-		return;
-		}
-
-	text = IDC_BUFFEREDTIME->text();
-	nTmp=text.toInt(&bOk);
-	if(bOk)
-		{
-		nBufferedTime = nTmp;
-		}
-	else
-		{
-		IDC_BUFFEREDTIME->setFocus();
-		return;
-		}
-	SaveParameters();
-	accept();   
-	}
+    text = IDC_BUFFEREDTIME->text();
+    nTmp=text.toInt(&bOk);
+    if(bOk)
+    {
+        nBufferedTime = nTmp;
+    }
+    else
+    {
+        IDC_BUFFEREDTIME->setFocus();
+        return;
+    }
+    qDebug("Calling SaveParameters...");
+    SaveParameters();
+    accept();
+}
 void Set_All_Parameters::SaveParameters()
-	{
-	SaveGlobalParam();
-//	NrtsInfoX.SaveConfigToIni();
-	NrtsInfoX.SaveConfigToFile();
-	::NrtsInfo = NrtsInfoX;
-	}
+{
+    SaveGlobalParam();
+    //	NrtsInfoX.SaveConfigToIni();
+    qDebug("Calling SaveConfigToFile...");
+    NrtsInfoX.SaveConfigToFile();
+    ::NrtsInfo = NrtsInfoX;
+}
 void Set_All_Parameters::LoadStaList()
-	{
-	char cSta[16];
+{
+    char cSta[16];
     QMap<QString, CNRTSSTAINFO * >::Iterator i;
     CNRTSSTAINFO *si;
     QPixmap pixFlag;
 
-
-/*	m_sta.DeleteAllItems();*/
-
     IDC_STA->setRowCount(0);
 
-	int nRow = 0;
+    int nRow = 0;
 
     for(i=NrtsInfoX.StaInfo.begin(); i!=NrtsInfoX.StaInfo.end(); ++i )
     {
         si = *i;
         strcpy(cSta,si->Sta.toLocal8Bit().data());
-
 
         IDC_STA->insertRow(nRow);
         IDC_STA->setItem(nRow,      0, new QTableWidgetItem(cSta));
@@ -377,67 +344,55 @@ void Set_All_Parameters::LoadStaList()
             pixFlag.load( ":/images/flag.bmp" );
 
         }
-		else
+        else
         {
             pixFlag.load( ":/images/blank.bmp" );
         }
         IDC_STA->item(nRow, 0)->setIcon(pixFlag);
-		nRow++;
-/*
-		m_sta.InsertItem(&lvi);
-		if(bHasSelectedChan(cSta))
-			{
-			m_sta.SetItemState(i,0x2000,LVIS_STATEIMAGEMASK);
-			}
-		else
-			{
-			m_sta.SetItemState(i,0x1000,LVIS_STATEIMAGEMASK);
-			}
-*/
-		}
-	}
+        nRow++;
+    }
+}
+
 void Set_All_Parameters::OnLoadList()
-	{
+{
 
-	long nTmp;
-	bool bOk;
- 	QString text;
+    long nTmp;
+    bool bOk;
+    QString text;
 
-	text = IDC_PORT->text();
-	nTmp=text.toInt(&bOk);
-	if(bOk)
-		{
-		nNrtsPort = nTmp;
-		}
-	else
-		{
-		IDC_PORT->setFocus();
-		return;
-		}
+    text = IDC_PORT->text();
+    nTmp=text.toInt(&bOk);
+    if(bOk)
+    {
+        nNrtsPort = nTmp;
+    }
+    else
+    {
+        IDC_PORT->setFocus();
+        return;
+    }
 
-	server = IDC_NRTSSERVER->text();
+    server = IDC_NRTSSERVER->text();
 
-
-
-	if(NrtsInfoX.LoadConfigFromServer()==1)
-		{
-		LoadStaList();
-		}
-	else
-		{
-		QMessageBox mb("ERROR","Load Config from server error",QMessageBox::Critical, QMessageBox::Ok, NULL, NULL);
-		mb.exec();
-		}
-	}
+    if(NrtsInfoX.LoadConfigFromServer()==1)
+    {
+        LoadStaList();
+    }
+    else
+    {
+        QMessageBox mb("ERROR","Load Config from server error",QMessageBox::Critical, QMessageBox::Ok, int(NULL), int(NULL));
+        mb.exec();
+    }
+}
 void Set_All_Parameters::OnClickStaListTableItem( QTableWidgetItem *item)
-	{
-//	int row=0;
-//	int col=0;
+{
+    //	int row=0;
+    //	int col=0;
 
     QString Sta=item->text();
-	LoadChanList(Sta);
-	ActiveSta=Sta;
-	}
+    LoadChanList(Sta);
+    ActiveSta=Sta;
+}
 void Set_All_Parameters::OnClickChanListTableItem( QTableWidgetItem *item)
 {
     int row = item->row();
@@ -446,18 +401,18 @@ void Set_All_Parameters::OnClickChanListTableItem( QTableWidgetItem *item)
 
     if(item->checkState() & Qt::Checked)
     {
-		SetChanDrawState(ActiveSta, Chan, LCODE, TRUE);
+        SetChanDrawState(ActiveSta, Chan, LCODE, TRUE);
     }
-	else
+    else
     {
-		SetChanDrawState(ActiveSta, Chan, LCODE, FALSE);
+        SetChanDrawState(ActiveSta, Chan, LCODE, FALSE);
     }
-//	ActiveSta=Sta;
+    //	ActiveSta=Sta;
 }
 void Set_All_Parameters::SetChanDrawState(const QString &sSta, const QString &sChan, const QString &LCODE, BOOL bSelected)
 {
-	CNRTSSTAINFO *si;
-	CNRTSCHANINFO *ci;
+    CNRTSSTAINFO *si;
+    CNRTSCHANINFO *ci;
 
     QMap<QString, CNRTSSTAINFO * >::Iterator i;
     QMap<QString, CNRTSCHANINFO * >::Iterator j;
@@ -473,74 +428,74 @@ void Set_All_Parameters::SetChanDrawState(const QString &sSta, const QString &sC
     SetStationCheck();
 
 
-/*    for(i=NrtsInfoX.StaInfo.begin(); i!=NrtsInfoX.StaInfo.end(); ++i )
+    /*    for(i=NrtsInfoX.StaInfo.begin(); i!=NrtsInfoX.StaInfo.end(); ++i )
     {
         si = *i;
-		if(sSta.compare(si->Sta)==0)
+        if(sSta.compare(si->Sta)==0)
         {
             for(j=si->ChanInfo.begin(); j!=si->ChanInfo.end(); ++j )
             {
                 ci = *j;
-				if(sChan.compare(ci->Chan)==0)
+                if(sChan.compare(ci->Chan)==0)
                 {
-					if(LCODE.isEmpty()&&ci->LCODE.isEmpty())
+                    if(LCODE.isEmpty()&&ci->LCODE.isEmpty())
                     {
-						ci->bSelected=bSelected;
-						SetStationCheck();
-						return;
+                        ci->bSelected=bSelected;
+                        SetStationCheck();
+                        return;
                     }
-					else
+                    else
                     {
-						if( (LCODE.compare(ci->LCODE)==0) &&
-							(!ci->LCODE.isEmpty()))
-							{
-							ci->bSelected=bSelected;
-							SetStationCheck();
-							return;
-							}
+                        if( (LCODE.compare(ci->LCODE)==0) &&
+                            (!ci->LCODE.isEmpty()))
+                            {
+                            ci->bSelected=bSelected;
+                            SetStationCheck();
+                            return;
+                            }
                     }
                 }
             }
-			return;
+            return;
         }
     }*/
 }
 
 void Set_All_Parameters::LoadChanList(QString &sSta)
 {
-    QTableWidgetItem *item0;
+    //    QTableWidgetItem *item0;
 
-	int nRow = 0;
-	CNRTSSTAINFO *si;
-	CNRTSCHANINFO *ci;
+    int nRow = 0;
+    CNRTSSTAINFO *si;
+    CNRTSCHANINFO *ci;
     QMap<QString, CNRTSSTAINFO * >::Iterator i;
     QMap<QString, CNRTSCHANINFO * >::Iterator j;
 
-	char cChan[16],cSpS[16], cLoc[16];
+    char cChan[16],cSpS[16], cLoc[16];
 
     IDC_CHAN->setRowCount(0);
 
-//    for(i=NrtsInfoX.StaInfo.begin(); i!=NrtsInfoX.StaInfo.end(); ++i )
+    //    for(i=NrtsInfoX.StaInfo.begin(); i!=NrtsInfoX.StaInfo.end(); ++i )
     {
         si = NrtsInfoX.StaInfo.value(sSta);
-//		if(sSta.compare(si->Sta)==0)
+        //		if(sSta.compare(si->Sta)==0)
         {
-			int nChan=si->ChanInfo.count();
+            int nChan=si->ChanInfo.count();
             IDC_CHAN->setRowCount( nChan );
             for(j=si->ChanInfo.begin(); j!=si->ChanInfo.end(); ++j )
             {
                 ci = *j;
                 strcpy(cChan, ci->Chan.toLocal8Bit().data());
-				if(ci->dSpS>0)
+                if(ci->dSpS>0)
                 {
-					sprintf(cSpS,"%.2f",ci->dSpS);
+                    sprintf(cSpS,"%.2f",ci->dSpS);
                 }
-				else
+                else
                 {
-					sprintf(cSpS,"-");
+                    sprintf(cSpS,"-");
                 }
                 strcpy(cLoc, ci->LCODE.toLocal8Bit().data());
-				
+
 
 
 
@@ -552,28 +507,28 @@ void Set_All_Parameters::LoadChanList(QString &sSta)
                 if(ci->bSelected) 	IDC_CHAN->item(nRow, 0)->setCheckState(Qt::Checked);
                 else                IDC_CHAN->item(nRow, 0)->setCheckState(Qt::Unchecked);
 
-//                IDC_CHAN->item( nRow, 1 )->setText( cLoc );
-//                IDC_CHAN->item( nRow++, 2)->setText(  cSpS );
+                //                IDC_CHAN->item( nRow, 1 )->setText( cLoc );
+                //                IDC_CHAN->item( nRow++, 2)->setText(  cSpS );
                 ++nRow;
 
             }
-			return;
+            return;
         }
     }
 
 }
 
 void Set_All_Parameters::SetStationCheck()
-	{
+{
     QPixmap pixFlag;
-	int row = IDC_STA->currentRow();
+    int row = IDC_STA->currentRow();
     QString Sta=IDC_STA->item(row,0)->text();
 
-	if(bHasSelectedChan(ActiveSta))
+    if(bHasSelectedChan(ActiveSta))
     {
         pixFlag.load( ":/images/flag.bmp" );
     }
-	else
+    else
     {
         pixFlag.load( ":/images/blank.bmp" );
     }
@@ -581,36 +536,36 @@ void Set_All_Parameters::SetStationCheck()
     IDC_STA->item(row,0)->setIcon( pixFlag );
 }
 BOOL Set_All_Parameters::bHasSelectedChan(QString sSta)
-	{
-	CNRTSSTAINFO *si;
-	CNRTSCHANINFO *ci;
+{
+    CNRTSSTAINFO *si;
+    CNRTSCHANINFO *ci;
     QMap<QString, CNRTSSTAINFO * >::Iterator i;
     QMap<QString, CNRTSCHANINFO * >::Iterator j;
 
     for(i=NrtsInfoX.StaInfo.begin(); i!=NrtsInfoX.StaInfo.end(); ++i )
     {
         si = *i;
-		if(sSta.compare(si->Sta)==0)
+        if(sSta.compare(si->Sta)==0)
         {
             for(j=si->ChanInfo.begin(); j!=si->ChanInfo.end(); ++j)
             {
                 ci = *j;
-				if(ci->bSelected) return TRUE;
+                if(ci->bSelected) return TRUE;
             }
         }
     }
-	return FALSE;
-	}
+    return FALSE;
+}
 BOOL Set_All_Parameters::bHasSelectedChan(CNRTSSTAINFO *si)
 {
-	CNRTSCHANINFO *ci;
+    CNRTSCHANINFO *ci;
     QMap<QString, CNRTSCHANINFO * >::Iterator j;
     for(j=si->ChanInfo.begin(); j!=si->ChanInfo.end(); ++j)
     {
         ci = *j;
-		if(ci->bSelected) return TRUE;
+        if(ci->bSelected) return TRUE;
     }
-	return FALSE;
+    return FALSE;
 }
 void GetWidgetTextRectangle(QWidget *pw, const char *p, QRect &qrc)
 {
@@ -621,7 +576,7 @@ void GetWidgetTextRectangle(QWidget *pw, const char *p, QRect &qrc)
 }
 
 void Set_All_Parameters::InitStaTable()
-    {
+{
     QRect qrc, tblrc;
     IDC_STA = new QTableWidget(Channels);
 
@@ -632,7 +587,6 @@ void Set_All_Parameters::InitStaTable()
     QStringList  labels;
     labels << "Station" << "Station";
     IDC_STA->setHorizontalHeaderLabels(labels);
-//	qtw->show();
     IDC_STA->setSelectionBehavior(QAbstractItemView::SelectRows);
     IDC_STA->setSelectionMode(QAbstractItemView::SingleSelection);
     IDC_STA->verticalHeader()->hide();
@@ -642,17 +596,17 @@ void Set_All_Parameters::InitStaTable()
 
     tblrc = IDC_STA->rect();
     IDC_STA->setColumnWidth ( 0, qrc.width()+8);
-//
+    //
     IDC_STA->setMaximumWidth( qrc.width()*2);
     IDC_STA->setMinimumWidth( qrc.width()*2);
 
     tblrc = IDC_STA->rect();
     IDC_STA->setColumnWidth ( 0, tblrc.width()-4);
 
-//	connect(StaTable, SIGNAL(  currentCellChanged ( int , int , int , int  ) ), this,  SLOT(OnCurrentCellChanged(int, int, int, int))  );
+    //	connect(StaTable, SIGNAL(  currentCellChanged ( int , int , int , int  ) ), this,  SLOT(OnCurrentCellChanged(int, int, int, int))  );
     connect( IDC_STA, SIGNAL(  itemClicked(  QTableWidgetItem *) ), this,  SLOT(OnClickStaListTableItem(  QTableWidgetItem *))  );
 
-    }
+}
 
 /*-----------------------------------------------------------------------+
  |                                                                       |
@@ -680,4 +634,4 @@ void Set_All_Parameters::InitStaTable()
 /* Revision History
  *
  * $Log$
- */	
+ */

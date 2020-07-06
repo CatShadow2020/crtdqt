@@ -1,10 +1,10 @@
-#pragma "$Id$"
+//////////////////////////////////////////////////////////////////////
 // DataBlock.h: interface for the CDataBlock class.
 //
 //////////////////////////////////////////////////////////////////////
 
-#if !defined(AFX_DATABLOCK_H__F0C2AFB6_FD5A_11D2_8661_4CAE18000000__INCLUDED_)
-#define AFX_DATABLOCK_H__F0C2AFB6_FD5A_11D2_8661_4CAE18000000__INCLUDED_
+#if !defined(_DATABLOCK_H_INCLUDED_)
+#define _DATABLOCK_H_INCLUDED_
 
 
 #include "platform.h"
@@ -32,7 +32,7 @@ public:
     long   *data;                  /* raw data storage (if required)   */
 	};
 
-#endif // !defined(AFX_DATABLOCK_H__F0C2AFB6_FD5A_11D2_8661_4CAE18000000__INCLUDED_)
+#endif // !defined(_DATABLOCK_H_INCLUDED_)
 /*-----------------------------------------------------------------------+
  |                                                                       |
  | Copyright (C) 2016 Regents of the University of California            |

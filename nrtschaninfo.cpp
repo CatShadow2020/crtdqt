@@ -1,5 +1,4 @@
-#pragma "$Id$"
-
+//////////////////////////////////////////////////////////////////////
 // NRTSCHANINFO.cpp: implementation of the CNRTSCHANINFO class.
 //
 //////////////////////////////////////////////////////////////////////
@@ -13,23 +12,23 @@
 //////////////////////////////////////////////////////////////////////
 
 CNRTSCHANINFO::CNRTSCHANINFO()
-	{
-	dSpS=1.;
-	bSelected=FALSE;
-	LCODE="??";
-	}
+{
+    dSpS=1.;
+    bSelected=FALSE;
+    LCODE="??";
+}
 CNRTSCHANINFO::CNRTSCHANINFO(QString &ChanName, QString &csLCODE, double dSpS, BOOL bSelected)
-	{
-	LCODE = csLCODE;
-	Chan=ChanName;
-	this->dSpS=dSpS;
-	this->bSelected=bSelected;
-	}
+{
+    LCODE = csLCODE;
+    Chan=ChanName;
+    this->dSpS=dSpS;
+    this->bSelected=bSelected;
+}
 
 CNRTSCHANINFO::~CNRTSCHANINFO()
-	{
+{
 
-	}
+}
 /*-----------------------------------------------------------------------+
  |                                                                       |
  | Copyright (C) 2016 Regents of the University of California            |

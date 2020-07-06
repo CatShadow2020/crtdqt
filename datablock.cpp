@@ -1,4 +1,4 @@
-#pragma "$Id$"
+//////////////////////////////////////////////////////////////////////
 // DataBlock.cpp: implementation of the CDataBlock class.
 //
 //////////////////////////////////////////////////////////////////////
@@ -11,39 +11,39 @@
 //////////////////////////////////////////////////////////////////////
 
 CDataBlock::CDataBlock()
-	{
-	data = NULL;
-	}
+{
+    data = NULL;
+}
 
 CDataBlock::~CDataBlock()
-	{
-	if(data!=NULL) delete[] data;
-	data=NULL;
-	}
+{
+    if(data!=NULL) delete[] data;
+    data=NULL;
+}
 
 void CDataBlock::PutData(int n, INT32 *plData)
-	{
-	data=new long[n];
-	if(data!=NULL)
-		{
-		for(int i=0; i<n; ++i)
-			{
-			data[i] = plData[i];
-			}
-		}
-	}
+{
+    data=new long[n];
+    if(data!=NULL)
+    {
+        for(int i=0; i<n; ++i)
+        {
+            data[i] = plData[i];
+        }
+    }
+}
 
 void CDataBlock::PutData(int n, UINT8 *uint8data)
-	{
-	data=new long[n];
-	if(data!=NULL)
-		{
-		for(int i=0; i<n; ++i)
-			{
-			data[i] = uint8data[i];
-			}
-		}
-	}
+{
+    data=new long[n];
+    if(data!=NULL)
+    {
+        for(int i=0; i<n; ++i)
+        {
+            data[i] = uint8data[i];
+        }
+    }
+}
 /*-----------------------------------------------------------------------+
  |                                                                       |
  | Copyright (C) 2016 Regents of the University of California            |

@@ -1,5 +1,3 @@
-#pragma "$Id$"
-
 #include <qstring.h> 
 #include <stdlib.h>
 #include <qsettings.h> 

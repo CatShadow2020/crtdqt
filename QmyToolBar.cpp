@@ -1,5 +1,4 @@
-#pragma "$Id$"
-
+//////////////////////////////////////////////////////////////////////
 // QmyToolBar.cpp: implementation of the QmyToolBar class.
 //
 //////////////////////////////////////////////////////////////////////
@@ -13,16 +12,14 @@
 //////////////////////////////////////////////////////////////////////
 
 QmyToolBar::QmyToolBar(QWidget * parent ):QToolBar( parent )
-	{
+{
     qDebug("QmyToolBar::QmyToolBar");
 
     this->setStyleSheet("QToolBar {background-color: lightgray;}");
 
     setFloatable(true);
-//    QAction     *m_ActionConfigButton;
-//    QAction     *m_ActionStopButton;
-
-
+    //    QAction     *m_ActionConfigButton;
+    //    QAction     *m_ActionStopButton;
 
     runButton = new QToolButton( this );
     runButton->setIcon( QIcon( ":/images/run.ico" ) );
@@ -62,7 +59,7 @@ QmyToolBar::QmyToolBar(QWidget * parent ):QToolBar( parent )
     expandButton->setFixedSize( 48, 48 );
     expandButton->setIcon( QPixmap( ":/images/zoom_in.ico" ) );
     m_ActionExpandButton = addWidget(expandButton);
-	
+
     contractButton = new QToolButton( this );
     contractButton->setFixedSize( 48, 48);
     contractButton->setIcon( QPixmap( ":/images/zoom_out.ico" ) );
@@ -73,7 +70,7 @@ QmyToolBar::QmyToolBar(QWidget * parent ):QToolBar( parent )
     upButton->setFixedSize( 48, 48);
     upButton->setIcon( QPixmap( ":/images/up.ico" ) );
     m_ActionUpButton = addWidget( upButton );
-	
+
     downButton = new QToolButton( this );
     downButton->setFixedSize( 48, 48);
     downButton->setIcon( QPixmap( ":/images/down.ico" ) );
@@ -89,26 +86,26 @@ QmyToolBar::QmyToolBar(QWidget * parent ):QToolBar( parent )
 
     connect( configButton, SIGNAL( clicked() ), parent, SLOT( configButton_clicked() ) );
     connect( runButton, SIGNAL( clicked() ), parent, SLOT( runButton_clicked() ) );
-	connect( autoButton, SIGNAL( clicked() ), parent, SLOT( autoButton_clicked() ) );
+    connect( autoButton, SIGNAL( clicked() ), parent, SLOT( autoButton_clicked() ) );
     connect( autoButton1, SIGNAL( clicked() ), parent, SLOT( autoButton1_clicked() ) );
     connect( autoButton2, SIGNAL( clicked() ), parent, SLOT( autoButton2_clicked() ) );
 
-	connect( expandButton, SIGNAL( clicked() ), parent, SLOT( expandButton_clicked() ) );
-	connect( contractButton, SIGNAL( clicked() ), parent, SLOT( contractButton_clicked() ) );
-	connect( upButton, SIGNAL( clicked() ), parent, SLOT( upButton_clicked() ) );
-	connect( downButton, SIGNAL( clicked() ), parent, SLOT( downButton_clicked() ) );
-	connect( stopButton, SIGNAL( clicked() ), parent, SLOT( stopButton_clicked() ) );
-	connect( aboutButton, SIGNAL( clicked() ), parent, SLOT( aboutButton_clicked() ) );
+    connect( expandButton, SIGNAL( clicked() ), parent, SLOT( expandButton_clicked() ) );
+    connect( contractButton, SIGNAL( clicked() ), parent, SLOT( contractButton_clicked() ) );
+    connect( upButton, SIGNAL( clicked() ), parent, SLOT( upButton_clicked() ) );
+    connect( downButton, SIGNAL( clicked() ), parent, SLOT( downButton_clicked() ) );
+    connect( stopButton, SIGNAL( clicked() ), parent, SLOT( stopButton_clicked() ) );
+    connect( aboutButton, SIGNAL( clicked() ), parent, SLOT( aboutButton_clicked() ) );
 
-	}
+}
 
 QmyToolBar::~QmyToolBar()
-	{
+{
 
-	}
+}
 void QmyToolBar::SetToolbarState(int nState)
-	{
-	if(nState==0)
+{
+    if(nState==0)
     {
         m_ActionRunButton->setVisible(true);
         m_ActionConfigButton->setVisible(true);
@@ -123,11 +120,11 @@ void QmyToolBar::SetToolbarState(int nState)
         m_ActionContractButton->setVisible(false);
         m_ActionUpButton->setVisible(false);
         m_ActionDownButton->setVisible(false);
-		adjustSize ();
-		return;
+        adjustSize ();
+        return;
     }
 
-	if(nState==1)
+    if(nState==1)
     {
         m_ActionRunButton->setVisible(false);
         m_ActionConfigButton->setVisible(false);
@@ -145,30 +142,30 @@ void QmyToolBar::SetToolbarState(int nState)
         m_ActionDownButton->setVisible(true);
 
         adjustSize();
-		return;
+        return;
     }
 
-	if(nState==2)
+    if(nState==2)
     {
         m_ActionRunButton->setVisible(false);
         m_ActionConfigButton->setVisible(false);
         m_ActionStopButton->setVisible(false);
-		autoButton->hide();
-		autoButton1->hide();
-		stopButton->hide();
+        autoButton->hide();
+        autoButton1->hide();
+        stopButton->hide();
         m_ActionAutoFitButton->setVisible(false);
-		expandButton->hide();
-		contractButton->hide();
-		upButton->hide();
-		downButton->hide();
-		adjustSize();
-		return;
+        expandButton->hide();
+        contractButton->hide();
+        upButton->hide();
+        downButton->hide();
+        adjustSize();
+        return;
     }
 
 }
 void QmyToolBar::languageChange()
-	{
-//   setLabel( tr( "Tools" ) );
+{
+    //   setLabel( tr( "Tools" ) );
     setToolTip("Tools");
     runButton->setText( QString::null );
     runButton->setToolTip( tr( "Run", "Run" ) );
@@ -186,9 +183,9 @@ void QmyToolBar::languageChange()
     downButton->setToolTip( tr( "Shift graph down", "Shift graph down" ) );
     upButton->setToolTip( tr( "Shift graph up", "Shift graph up" ) );
     stopButton->setToolTip( tr( "Stop", "Stop" ) );
-	
-	
-	}
+
+
+}
 /*-----------------------------------------------------------------------+
  |                                                                       |
  | Copyright (C) 2016 Regents of the University of California            |
@@ -215,5 +212,5 @@ void QmyToolBar::languageChange()
 /* Revision History
  *
  * $Log$
- */	
-	
+ */
+

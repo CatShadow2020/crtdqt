@@ -1,38 +1,39 @@
+//////////////////////////////////////////////////////////////////////
 // IsiInterruptThread.cpp: implementation of the IsiInterruptThread class.
 //
 //////////////////////////////////////////////////////////////////////
 
 #include "IsiInterruptThread.h"
-#pragma "$Id$"
+
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
 
 IsiInterruptThread::IsiInterruptThread():QThread()
-	{
+{
 
-	}
+}
 
 IsiInterruptThread::~IsiInterruptThread()
-	{
+{
 
-	}
+}
 void IsiInterruptThread::Init(ISI **p)
-	{
-	pisi = p;;
-	}
+{
+    pisi = p;;
+}
 
 void IsiInterruptThread::run()
-	{
-	while(bContinue)
-		{
-		sleep(2);
-		}
-	if(pisi!=NULL)
-		{
-		isiSetFlag(*pisi, ISI_FLAG_BREAK);
-		}
-	}
+{
+    while (bContinue)
+    {
+        sleep(2);
+    }
+    if (pisi!=NULL)
+    {
+        isiSetFlag(*pisi, ISI_FLAG_BREAK);
+    }
+}
 /*-----------------------------------------------------------------------+
  |                                                                       |
  | Copyright (C) 2016 Regents of the University of California            |
