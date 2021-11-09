@@ -223,9 +223,9 @@ void Set_All_Parameters::languageChange()
     buttonHelp->setText( tr( "&Help" ) );
     buttonHelp->setShortcut( QKeySequence( tr( "F1" ) ) );
     buttonOk->setText( tr( "&OK" ) );
-    buttonOk->setShortcut( QKeySequence( QString::null ) );
+    //buttonOk->setShortcut( QKeySequence( QString::null ) );
     buttonCancel->setText( tr( "&Cancel" ) );
-    buttonCancel->setShortcut( QKeySequence( QString::null ) );
+    //buttonCancel->setShortcut( QKeySequence( QString::null ) );
     tabWidget->setToolTip(  tr( "Display parameters" ) );
     Port_number_2->setText( tr( "Port number" ) );
     ISI_Server_2->setText( tr( "ISI Server" ) );
@@ -570,7 +570,7 @@ BOOL Set_All_Parameters::bHasSelectedChan(CNRTSSTAINFO *si)
 void GetWidgetTextRectangle(QWidget *pw, const char *p, QRect &qrc)
 {
     QFontMetrics fm = pw->fontMetrics();
-    int textWidthInPixels = fm.width(p);
+    int textWidthInPixels = fm.boundingRect(p).width();
     int textHeightInPixels = fm.height();
     qrc.setRect(0, 0, textWidthInPixels, textHeightInPixels);
 }

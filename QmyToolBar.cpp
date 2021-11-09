@@ -167,11 +167,11 @@ void QmyToolBar::languageChange()
 {
     //   setLabel( tr( "Tools" ) );
     setToolTip("Tools");
-    runButton->setText( QString::null );
+    runButton->setText( "" );
     runButton->setToolTip( tr( "Run", "Run" ) );
-    configButton->setText( QString::null );
+    configButton->setText( "" );
     configButton->setToolTip( tr( "Config", "Config" ) );
-    aboutButton->setText( QString::null );
+    aboutButton->setText( "" );
     autoButton->setToolTip( tr( "Fit displayed signal data to window", "Fit displayed signal data to window" ) );
     aboutButton->setToolTip( tr( "About", "About" ) );
     autoButton1->setToolTip( tr("Fit buffered signal data to window","Fit buffered signal data to window"));

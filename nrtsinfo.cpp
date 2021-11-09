@@ -192,9 +192,9 @@ void CNRTSINFO::SaveConfig()
         for(j=si->ChanInfo.begin(); j!=si->ChanInfo.end(); ++j)
         {
             ci=*j;
-            qs.sprintf("%s/%s/%s/SPS", si->Sta.toLocal8Bit().data(), ci->Chan.toLocal8Bit().data(), ci->LCODE.toLocal8Bit().data());
+            qs.asprintf("%s/%s/%s/SPS", si->Sta.toLocal8Bit().data(), ci->Chan.toLocal8Bit().data(), ci->LCODE.toLocal8Bit().data());
             settings.setValue(APP_KEY_C + qs, ci->dSpS);
-            qs.sprintf("%s/%s/%s/ON", si->Sta.toLocal8Bit().data(), ci->Chan.toLocal8Bit().data(), ci->LCODE.toLocal8Bit().data());
+            qs.asprintf("%s/%s/%s/ON", si->Sta.toLocal8Bit().data(), ci->Chan.toLocal8Bit().data(), ci->LCODE.toLocal8Bit().data());
             settings.setValue(APP_KEY_C + qs, ci->bSelected);
         }
     }
