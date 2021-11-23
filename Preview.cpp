@@ -66,10 +66,10 @@ void CPreview::DrawPreviewBitmap()
     y1=4;
     y2=MaxY-4;
 
-    xw1=1;
-    xw2=MaxX;
-    yw1=0;
-    yw2=MaxY;
+    xw1=2;
+    xw2=MaxX-2;
+    yw1=2;
+    yw2=MaxY-2;
 
 
     QBrush WhiteBrush(QColor(255,255,255));

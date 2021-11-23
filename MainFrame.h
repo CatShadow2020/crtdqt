@@ -10,6 +10,7 @@
 #include <qaction.h>
 #include <qmenubar.h>
 #include <QMenu>
+#include <QCloseEvent>
 #include <qtoolbar.h>
 #include <qimage.h>
 #include <qpixmap.h>
@@ -76,11 +77,10 @@ public slots:
     virtual void SetTextToStatusbarSlot(QString s);
     virtual void drawPreviewSlot();
     virtual void stopSlot();
-
-
+    virtual void beforeQuitCRTD();
 
 protected:
-	virtual void  resizeEvent( QResizeEvent * );
+    virtual void  resizeEvent( QResizeEvent * );
     bool eventFilter(QObject *obj, QEvent *event);
     void mousePressEvent ( QMouseEvent * e );
 

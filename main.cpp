@@ -44,7 +44,7 @@ int main(int argc,char *argv[])
     mw.show();
     a.connect( &a, SIGNAL(lastWindowClosed()), &a, SLOT(quit()) );
     //   a.setCentralWidget( &mw );
-
+    QApplication::connect(&a, SIGNAL(aboutToQuit()), &mw, SLOT(beforeQuitCRTD()));
     a.exec();
 
     return 0;

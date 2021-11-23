@@ -1,19 +1,4 @@
 #include <qapplication.h>
-//#include <qvariant.h>
-//#include <qpushbutton.h>
-//#include <qlayout.h>
-//#include <qtooltip.h>
-//#include <qwhatsthis.h>
-//#include <qaction.h>
-//#include <qmenubar.h>
-//#include <QMenu>
-//#include <qtoolbar.h>
-//#include <qimage.h>
-//#include <qpixmap.h>
-//#include <qstatusbar.h>
-//#include <qmessagebox.h>
-//#include <qfont.h>
-//#include <QMouseEvent>
 #include "set_all_parameters.h"
 #include "CRTDglob.h"
 #include "MainFrame.h"
@@ -66,6 +51,7 @@ MainFrame::MainFrame( QWidget* parent) : QMainWindow( parent)
  */
 MainFrame::~MainFrame()
 {
+    qDebug("MainFrame::~MainFrame()");
 }
 
 /*
@@ -153,7 +139,7 @@ void MainFrame::downButton_clicked()
 
 void MainFrame::aboutButton_clicked()
 {
-    QMessageBox::about(this,"About CRTDQT(ISI)","CRTD Version 1.0.1. Project IDA\nBuild 2018-08-02\nCopyright (C) 2016, 2017, 2018 University of California, San Diego");
+    QMessageBox::about(this,"About CRTDQT(ISI)","CRTD Version 1.0.2. Project IDA\nBuild 2021-11-23\nCopyright (C) 2016-2021 University of California, San Diego");
 }
 
 void  MainFrame::resizeEvent( QResizeEvent *q )
@@ -251,6 +237,14 @@ void MainFrame::stopSlot()
     pPreview->Stop();
     pDisplay->Stop();
     toolBar->SetToolbarState(0);
+}
+
+
+void MainFrame::beforeQuitCRTD()
+{
+     qDebug("MainFrame::beforeQuitCRTD");
+     StopAcquisition(this);
+     sleep(1);
 }
 /*-----------------------------------------------------------------------+
  |                                                                       |

@@ -1,12 +1,6 @@
 #pragma "$Id$"
 #include <qapplication.h>
 #include "StopAcquisitionThread.h"
-//#include "RTDisplay.h"
-//#include "platform.h"
-//#include "CRTDglob.h"
-//#include "isi.h"
-//#include "util.h"
-//#include "MainFrame.h"
 #include "GettingDataThread.h"
 
 
@@ -22,6 +16,7 @@ void StopAcquisition(MainFrame *p)
 {
 	StopT.Init(p);
 	StopT.start(QThread::NormalPriority);
+        StopT.wait();
 }
 
 void StartAcquisition(MainFrame *p)
